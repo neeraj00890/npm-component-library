@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "fabric-component": {
+      "projectType": "library",
+      "root": "projects/fabric-component",
+      "sourceRoot": "projects/fabric-component/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/fabric-component/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/fabric-component/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/fabric-component/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fabric-component/src/test.ts",
+            "tsConfig": "projects/fabric-component/tsconfig.spec.json",
+            "karmaConfig": "projects/fabric-component/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "fabric-component"
+}
